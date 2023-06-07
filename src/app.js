@@ -13,7 +13,10 @@ async function createApp() {
 
   app.use(
     cors({
-      origin: "http://localhost:3000",
+      origin: [
+        "http://localhost:3000",
+        "https://jolly-horse-9de104.netlify.app",
+      ],
     })
   );
 
