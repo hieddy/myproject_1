@@ -6,6 +6,8 @@ const { locationController } = require("./controller/locationController");
 const { stationsController } = require("./controller/stationsController");
 const cors = require("cors");
 
+config();
+
 async function createApp() {
   await loader.connectMongoDB();
 
