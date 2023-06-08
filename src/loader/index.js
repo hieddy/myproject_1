@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 // const config = require('../config');
 const dotenv = require("dotenv");
-const config = dotenv.config().parsed;
+const config = dotenv.config();
 
 async function connectMongoDB() {
   mongoose.connection.on("connecting", () => {
@@ -21,7 +21,7 @@ async function connectMongoDB() {
   });
 
   await mongoose
-    .connect(config.MONGODB_URL, {
+    .connect(process.env.MONGODB_URL, {
       minPoolsize: 4,
       maxPoolsize: 20,
     })
