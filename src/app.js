@@ -1,14 +1,15 @@
 const express = require("express");
 const loader = require("./loader");
-const config = require("./config");
+// const config = require("./config");
 const { testRouter } = require("./controller");
 const { locationController } = require("./controller/locationController");
 const { stationsController } = require("./controller/stationsController");
 const cors = require("cors");
-
-config();
+const dotenv = require("dotenv");
 
 async function createApp() {
+  const config = dotenv.config().parsed;
+
   await loader.connectMongoDB();
 
   const app = express();
@@ -35,7 +36,7 @@ async function createApp() {
   });
 
   // app.use((err, req, res, next) => {});
-  const port = config.port || 5001;
+  const port = config.PORT || 5001;
   app.listen(port, () => {
     console.log("listening on port : ", port);
   });
